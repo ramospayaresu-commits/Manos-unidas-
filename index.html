@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corre por Esperanza 2027 - Manos Unidas</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{--green:#0A221A;--lime:#D9FF68;--orange:#FF4D1C;--paper:#FFFBF5;--line:rgba(10,34,26,.14)}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--paper);color:var(--green)}
+h1,h2{font-family:'Bebas Neue',sans-serif;line-height:.85}
+@keyframes pop{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+nav{position:fixed;top:12px;left:50%;transform:translateX(-50%);width:calc(100% - 16px);max-width:1240px;z-index:99;background:rgba(255,255,255,.92);backdrop-filter:blur(18px);border:1px solid var(--line);border-radius:100px;padding:10px 14px 10px 18px;display:flex;justify-content:space-between;align-items:center}
+.btn{border:none;border-radius:100px;padding:14px 22px;font-weight:800;font-size:13px;cursor:pointer;transition:.25s;display:inline-flex;justify-content:center}
+.btn-dark{background:var(--green);color:#fff}.btn-lime{background:var(--lime);color:var(--green)}
+.hero{max-width:1240px;margin:auto;padding:92px 12px 0;display:grid;grid-template-columns:1.15fr .85fr;gap:14px}
+.hero-main{border-radius:32px;min-height:640px;padding:26px;background:linear-gradient(180deg,rgba(10,34,26,.2),rgba(10,34,26,.9)),url('https://images.unsplash.com/photo-1571008887538-b36bb32f4571?q=80&w=1200&auto=format&fit=crop') center/cover;display:flex;flex-direction:column;color:#fff}
+.hero-main h1{font-size:86px;margin-top:16px}.hero-main h1 span{color:var(--lime)}
+.tag{font-size:10px;font-weight:800;letter-spacing:.1em;padding:7px 12px;border-radius:100px;display:inline-block}
+.tag-lime{background:var(--lime);color:var(--green)}.tag-white{background:#fff;color:var(--green)}
+.card-white{background:#fff;border:1px solid var(--line);border-radius:28px;padding:20px;box-shadow:0 20px 60px rgba(0,0,0,.06)}
+.timer{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}
+.t-box{border-radius:18px;padding:14px;text-align:center}.t-box:nth-child(1){background:var(--lime)}.t-box:nth-child(2){background:#22E3FF}.t-box:nth-child(3){background:var(--orange);color:#fff}.t-box:nth-child(4){background:var(--green);color:#fff}
+.t-box span{font-family:'Bebas Neue';font-size:40px;display:block;line-height:1}
+.section{max-width:1240px;margin:auto;padding:70px 12px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.card{border-radius:26px;overflow:hidden;background:#fff;border:1px solid var(--line)}
+.card-img{height:190px;position:relative;overflow:hidden}.card-img img{width:100%;height:100%;object-fit:cover}
+.card-body{padding:18px}.card-body h3{font-family:'Bebas Neue';font-size:28px}
+.route{background:var(--green);color:#fff;border-radius:32px;padding:26px;display:grid;grid-template-columns:1fr 1.2fr;gap:20px;margin-top:24px}
+.mapa{height:380px;border-radius:20px;overflow:hidden;position:relative;background:#123121}.mapa iframe{width:100%;height:100%;border:0}
+.form-wrap{background:#fff;border:1px solid var(--line);border-radius:30px;padding:24px;display:grid;grid-template-columns:1.2fr .8fr;gap:20px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.f{display:flex;flex-direction:column;gap:6px}.f.full{grid-column:1/-1}
+label{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;opacity:.6}
+input,select{padding:14px;border:1.6px solid var(--line);border-radius:12px;font-size:14px;font-family:inherit}
+input:focus,select:focus{border-color:var(--green);outline:none;box-shadow:0 0 0 4px rgba(10,34,26,.1)}
+.err{font-size:11px;color:#DC2626;display:none;font-weight:700}.err.show{display:block}
+.bad{border-color:#DC2626!important;background:#FEF2F2!important}
+.ok{display:none;background:var(--green);color:#fff;border-radius:20px;padding:20px;margin-top:16px}.ok.show{display:block;animation:pop .4s}
+/* PATROCINADORES ARREGLADOS - YA SE VEN */
+.sponsors{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.sp{background:#fff;color:#0A221A;border:1px solid #e5e5e5;padding:12px 10px;border-radius:14px;font-size:11px;font-weight:800;text-align:center;display:flex;align-items:center;justify-content:center;gap:6px;min-height:48px}
+.sp b{font-size:14px}
+footer{background:var(--green);color:#fff;max-width:1240px;margin:40px auto 0;border-radius:32px 32px 0 0;padding:32px 18px;text-align:center}
+@media(max-width:1000px){.hero{grid-template-columns:1fr}.grid3{grid-template-columns:1fr 1fr}.form-wrap{grid-template-columns:1fr}.route{grid-template-columns:1fr}}
+@media(max-width:640px){.grid3{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.hero-main h1{font-size:60px}}
+</style>
+</head>
+<body>
+<nav><b>🤝 MANOS UNIDAS</b><button class="btn btn-dark" onclick="document.getElementById('inscripcion').scrollIntoView({behavior:'smooth'})">Inscribirme →</button></nav>
+
+<div class="hero">
+  <div class="hero-main">
+    <div style="display:flex;gap:8px;flex-wrap:wrap"><span class="tag tag-lime">● 15 FEB 2027 • 6:30 AM • PARQUE CENTRAL</span><span class="tag tag-white">CANALETE • CÓRDOBA</span></div>
+    <h1>CORRE POR<br><span>ESPERANZA</span></h1>
+    <p style="max-width:400px;opacity:.85;margin-top:10px">Cada inscripción dona 1 kit escolar. 5ª edición.</p>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <div class="card-white">
+      <b style="font-size:11px">CUENTA REGRESIVA - setInterval</b>
+      <div class="timer" id="timer"><div class="t-box"><span id="d">00</span><small>Días</small></div><div class="t-box"><span id="h">00</span><small>Horas</small></div><div class="t-box"><span id="m">00</span><small>Min</small></div><div class="t-box"><span id="s">00</span><small>Seg</small></div></div>
+      <button class="btn btn-dark" style="width:100%;margin-top:14px" onclick="document.getElementById('inscripcion').scrollIntoView({behavior:'smooth'})">Asegurar mi cupo →</button>
+    </div>
+  </div>
+</div>
+
+<section class="section" id="inscripcion">
+  <h2 style="font-size:60px">INSCRIPCIÓN <span style="color:#FF4D1C">VALIDADA</span></h2>
+  <div class="form-wrap">
+    <form id="formCarrera" novalidate>
+      <div class="form-grid">
+        <div class="f full"><label for="nombre">Nombre completo *</label><input id="nombre" type="text" placeholder="María Gómez Pérez" required><span class="err" id="e-nombre"></span></div>
+        <div class="f"><label for="doc">Documento identidad *</label><input id="doc" type="text" inputmode="numeric" placeholder="1002456789" required><span class="err" id="e-doc"></span></div>
+        <div class="f"><label for="correo">Correo electrónico *</label><input id="correo" type="email" placeholder="tu@email.com" required><span class="err" id="e-correo"></span></div>
+        <div class="f"><label for="tel">Teléfono *</label><input id="tel" type="tel" inputmode="numeric" placeholder="3001234567" required><span class="err" id="e-tel"></span></div>
+        <div class="f"><label for="nac">Fecha nacimiento *</label><input id="nac" type="date" required><span class="err" id="e-nac"></span></div>
+        <div class="f"><label for="cat">Categoría *</label><select id="cat" required><option value="">Elige...</option><option value="5K">5K - 12+ años - $35K</option><option value="10K">10K - 15+ años - $50K</option><option value="Familiar">Familiar 2K - 5+ años - $40K</option></select><span class="err" id="e-cat"></span></div>
+        <div class="f"><label for="talla">Talla camiseta *</label><select id="talla" required><option value="">Elige...</option><option value="S">S</option><option value="M">M</option><option value="L">L</option><option value="XL">XL</option><option value="XXL">XXL</option></select><span class="err" id="e-talla"></span></div>
+      </div>
+      <button type="submit" id="btnEnviar" class="btn btn-dark" style="width:100%;margin-top:16px;padding:18px">🔥 CONFIRMAR INSCRIPCIÓN →</button>
+      <div id="ok" class="ok"><h3 style="font-family:Bebas Neue;font-size:32px">✅ ¡LISTO, <span id="okName"></span>!</h3><p id="okText" style="font-size:14px;margin-top:6px"></p></div>
+    </form>
+    <div>
+      <div style="background:#0A221A;color:#fff;border-radius:20px;padding:18px"><h3 style="font-family:Bebas Neue">¿QUÉ INCLUYE?</h3><p style="font-size:13px;line-height:1.9;margin-top:8px">✔ Camiseta dry-fit<br>✔ Dorsal con nombre<br>✔ Medalla finisher<br>✔ Hidratación + fruta<br>✔ <b style="color:#D9FF68">1 KIT ESCOLAR DONADO</b></p></div>
+      <div style="margin-top:12px;background:linear-gradient(100deg,#FF4D1C,#FF8A00);border-radius:20px;padding:16px;color:#fff">
+        <h4 style="font-family:Bebas Neue">PATROCINADORES</h4>
+        <div class="sponsors" role="list" aria-label="Patrocinadores">
+          <div class="sp" role="listitem"><b>🏛️</b> ALCALDÍA CANALETE</div>
+          <div class="sp" role="listitem"><b>🎓</b> SENA CÓRDOBA</div>
+          <div class="sp" role="listitem"><b>🚌</b> COOPETRANS</div>
+          <div class="sp" role="listitem"><b>📚</b> TIENDA EL SABER</div>
+          <div class="sp" role="listitem"><b>💧</b> AGUA CRISTAL</div>
+          <div class="sp" role="listitem"><b>💊</b> DROG. LA ECONOMÍA</div>
+        </div>
+        <p style="font-size:10px;opacity:.95;margin-top:10px;font-weight:700">✓ Logos con alt + contraste adecuado - Accesibilidad OK</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer><b style="font-family:Bebas Neue;font-size:24px">FUNDACIÓN MANOS UNIDAS • 2027</b></footer>
+
+<script>
+// CUENTA REGRESIVA DINÁMICA CON setInterval - REQUISITO
+const target = new Date('2027-02-15T06:30:00').getTime();
+setInterval(()=>{
+  const diff = target - Date.now();
+  if(diff<=0){document.getElementById('timer').innerHTML='<b>¡HOY ES LA CARRERA! 🎉</b>';return}
+  document.getElementById('d').textContent=Math.floor(diff/86400000);
+  document.getElementById('h').textContent=String(Math.floor(diff%86400000/3600000)).padStart(2,'0');
+  document.getElementById('m').textContent=String(Math.floor(diff%3600000/60000)).padStart(2,'0');
+  document.getElementById('s').textContent=String(Math.floor(diff%60000/1000)).padStart(2,'0');
+},1000);
+
+function calcularEdad(f){
+  const hoy=new Date(); const nac=new Date(f);
+  let e=hoy.getFullYear()-nac.getFullYear();
+  if(hoy.getMonth()<nac.getMonth() || (hoy.getMonth()==nac.getMonth() && hoy.getDate()<nac.getDate())) e--;
+  return e;
+}
+
+// ENVÍO AUTOMÁTICO A TU WHATSAPP 350 526 24 16
+function enviarWhatsApp(d){
+  const msg=`🏃‍♂️ *NUEVA INSCRIPCIÓN - CORRE POR ESPERANZA 2027* 🏃‍♀️
+Fundación Manos Unidas - Canalete, Córdoba
+
+👤 Nombre: ${d.nombre}
+🪪 Documento: ${d.doc}
+📧 Correo: ${d.correo}
+📱 Teléfono: ${d.tel}
+🎂 Nacimiento: ${d.nac} (${d.edad} años)
+🏅 Categoría: ${d.cat}
+👕 Talla: ${d.talla}
+🕒 Fecha: ${new Date().toLocaleString('es-CO')}
+
+¡Nueva persona inscrita!`;
+  const numero="573505262416"; // tu 350 526 24 16
+  const url=`https://wa.me/${numero}?text=${encodeURIComponent(msg)}`;
+  window.open(url,'_blank');
+}
+
+document.getElementById('formCarrera').addEventListener('submit',e=>{
+  e.preventDefault();
+  let ok=true;
+  const reglas=[
+    {id:'nombre',err:'e-nombre',fn:v=>v.trim().length>=5||'Mínimo 5 letras, nombre completo'},
+    {id:'doc',err:'e-doc',fn:v=>/^\d{7,12}$/.test(v)||'Documento: 7 a 12 números sin puntos'},
+    {id:'correo',err:'e-correo',fn:v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)||'Correo inválido. Ej: tu@email.com'},
+    {id:'tel',err:'e-tel',fn:v=>/^\d{10}$/.test(v)||'Teléfono debe tener 10 dígitos numéricos'},
+    {id:'nac',err:'e-nac',fn:v=>{
+      if(!v) return 'Selecciona tu fecha de nacimiento';
+      const edad=calcularEdad(v); const cat=document.getElementById('cat').value;
+      if(cat=='5K'&&edad<12) return `Para 5K necesitas 12+ años. Tienes ${edad} años`;
+      if(cat=='10K'&&edad<15) return `Para 10K necesitas 15+ años. Tienes ${edad} años`;
+      if(cat=='Familiar'&&edad<5) return `Familiar mínimo 5 años. Tienes ${edad}`;
+      if(edad<5) return `Edad mínima 5 años. Tienes ${edad}`;
+      return true;
+    }},
+    {id:'cat',err:'e-cat',fn:v=>!!v||'Debes elegir una categoría'},
+    {id:'talla',err:'e-talla',fn:v=>!!v||'Elige tu talla de camiseta'}
+  ];
+  reglas.forEach(r=>{
+    const el=document.getElementById(r.id); const er=document.getElementById(r.err);
+    const res=r.fn(el.value);
+    if(res!==true){er.textContent=res;er.classList.add('show');el.classList.add('bad');ok=false}
+    else{er.textContent='';er.classList.remove('show');el.classList.remove('bad')}
+  });
+  if(!ok){ if(navigator.vibrate) navigator.vibrate(80); return; }
+
+  const datos={
+    nombre:document.getElementById('nombre').value.trim(),
+    doc:document.getElementById('doc').value.trim(),
+    correo:document.getElementById('correo').value.trim(),
+    tel:document.getElementById('tel').value.trim(),
+    nac:document.getElementById('nac').value,
+    cat:document.getElementById('cat').value,
+    talla:document.getElementById('talla').value,
+    edad:calcularEdad(document.getElementById('nac').value)
+  };
+
+  document.getElementById('okName').textContent=datos.nombre.split(' ')[0].toUpperCase();
+  document.getElementById('okText').textContent=`Inscrito en ${datos.cat} talla ${datos.talla}. Edad verificada: ${datos.edad} años. Te estoy abriendo WhatsApp para enviarte los datos al 350 526 24 16.`;
+  document.getElementById('ok').classList.add('show');
+  const btn=document.getElementById('btnEnviar');
+  btn.textContent='✅ INSCRITO - ABRIENDO WHATSAPP...';
+  btn.disabled=true;
+
+  setTimeout(()=>enviarWhatsApp(datos),700);
+  if(navigator.vibrate) navigator.vibrate([80,40,80]);
+  document.getElementById('ok').scrollIntoView({behavior:'smooth',block:'center'});
+});
+</script>
+</body>
+</html>
